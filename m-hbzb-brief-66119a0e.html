@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黑白直播 · 简明观赛指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: linear-gradient(145deg, #fde9d8 0%, #fae1c3 40%, #f5d4a8 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+      line-height: 1.6;
+      color: #2e241e;
+    }
+
+    .magazine {
+      max-width: 920px;
+      width: 100%;
+      background: rgba(255, 250, 242, 0.88);
+      backdrop-filter: blur(3px);
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 20px 40px -12px rgba(100, 60, 30, 0.3);
+      padding: 2.8rem 2.8rem 3.2rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+      .magazine {
+        padding: 2rem 1.5rem 2.2rem;
+        border-radius: 36px 36px 24px 24px;
+      }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #d9b382;
+      color: #fcf3e7;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 650;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      color: #331f14;
+      margin-bottom: 0.6rem;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #6b4c31;
+      border-left: 3px solid #d9a66b;
+      padding-left: 1rem;
+      margin-top: 0.1rem;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #3c2a1c;
+      margin-top: 3.2rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+      border-bottom: 1px solid #ebd5b9;
+      padding-bottom: 0.4rem;
+    }
+
+    h2:first-of-type {
+      margin-top: 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      font-size: 1.1rem;
+      color: #3b2d22;
+    }
+
+    .intro-highlight {
+      background: #f9eee0;
+      padding: 1.6rem 2rem;
+      border-radius: 28px;
+      margin: 2.2rem 0 1.8rem;
+      box-shadow: inset 0 1px 4px rgba(255, 245, 230, 0.8), 0 6px 12px -8px rgba(90, 50, 20, 0.2);
+    }
+
+    .intro-highlight p {
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0 1.2rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #fffaf2;
+      border-radius: 24px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 14px rgba(150, 100, 60, 0.08);
+      border: 1px solid #efe0cd;
+      transition: transform 0.1s ease;
+    }
+
+    .feature-item em {
+      font-style: normal;
+      display: block;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      color: #4f331f;
+    }
+
+    .feature-item span {
+      font-size: 0.95rem;
+      color: #5e4532;
+    }
+
+    .faq-block {
+      background: #f7ede1;
+      border-radius: 28px;
+      padding: 1.8rem 2.2rem;
+      margin: 2.6rem 0 2rem;
+    }
+
+    .faq-block details {
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+    }
+
+    .faq-block summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: #3b2a1b;
+      padding: 0.3rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-block summary::before {
+      content: "▸";
+      margin-right: 0.6rem;
+      color: #b88556;
+      font-size: 1.2rem;
+      transition: transform 0.15s;
+    }
+
+    .faq-block details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-block details p {
+      margin: 0.5rem 0 0.2rem 1.8rem;
+      font-size: 1rem;
+      color: #4c392b;
+    }
+
+    .access-note {
+      margin-top: 2.8rem;
+      padding: 1.6rem 2rem;
+      background: #ffffffd9;
+      border-radius: 36px;
+      text-align: center;
+      border: 1px solid #ebd2b7;
+      box-shadow: 0 4px 12px rgba(130, 80, 40, 0.06);
+    }
+
+    .access-note p {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .magazine a {
+      color: #a65d2b;
+      text-decoration: none;
+      font-weight: 550;
+      background: linear-gradient(to right, #f5dcc4, #f5dcc4) no-repeat 0 100%;
+      background-size: 0% 2px;
+      transition: background-size 0.2s, color 0.15s;
+      padding-bottom: 2px;
+    }
+
+    .magazine a:hover {
+      color: #6f3f1b;
+      background-size: 100% 2px;
+    }
+
+    .btn-link {
+      display: inline-block;
+      background: #d9a66b;
+      color: #2a1b10 !important;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.7rem 2.4rem;
+      border-radius: 60px;
+      box-shadow: 0 6px 14px rgba(150, 80, 30, 0.15);
+      transition: 0.18s;
+      letter-spacing: 0.3px;
+      background-image: linear-gradient(to bottom, #e7bc88, #cf9a60);
+      border: 1px solid #c28b53;
+    }
+
+    .btn-link:hover {
+      transform: scale(1.02);
+      background-image: linear-gradient(to bottom, #f0c999, #d6a367);
+      box-shadow: 0 8px 18px rgba(130, 70, 20, 0.2);
+      color: #24180e !important;
+      background-size: 100% 2px;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #755d48;
+      text-align: center;
+      border-top: 1px solid #eddccb;
+      padding-top: 1.8rem;
+    }
+
+    .footer-note span {
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="magazine">
+  <!-- 杂志专题式首页 -->
+  <div class="hero-badge">⚫ 简明指南 · 观赛提醒</div>
+  <h1>黑白直播<br>有时就是最对味的画面</h1>
+  <div class="subhead">没有花哨滤镜，不绕弯路，一场干净的观看体验</div>
+
+  <!-- 背景说明 / 简短介绍 -->
+  <div class="intro-highlight">
+    <p><strong>关于</strong> 很多人最初只是找一场比赛、一个稳定的信号，后来慢慢习惯了这种简单直接的观看方式。不需要反复切换，不用应付弹窗干扰——打开页面，赛事就在那里。这就是「黑白直播」给人最直观的印象：把杂音过滤掉，留下最核心的直播内容。</p>
+    <p>无论你是刚接触这类站点，还是已经用了很久，下面的几条提醒或许能帮你更顺畅地找到自己想看的那场球赛或电竞赛事。</p>
+  </div>
+
+  <!-- 三段自然介绍 + 特点 / 场景 -->
+  <h2>❶ 怎么找到想看的比赛</h2>
+  <p>进入 <a href="https://m--hbzb.com">黑白直播</a> 之后，大多数情况下首页就会列出当前热门和即将开始的场次。你可以按照联赛、赛事类型或者时间顺序浏览。如果当天比赛较多，也可以利用页面上的筛选或分类标签快速定位——一般会按足球、篮球、电竞等分栏。记住一个小技巧：在高峰时段（比如周末晚上）提前几分钟打开页面，避开拥挤的刷新等待。</p>
+
+  <h2>❷ 观赛前的小准备</h2>
+  <p>不同的比赛可能使用不同的信号源或播放线路。如果你发现某个画面卡顿或清晰度不理想，可以试着在播放器周围找一找“线路切换”或者“清晰度”选项。有时候换一条线路反而更流畅。另外，部分浏览器会默认屏蔽弹窗式播放器，建议把 <a href="https://m--hbzb.com">黑白直播</a> 的域名加入白名单或允许弹出窗口，避免直播被意外拦截。</p>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <em>📺 多赛事覆盖</em>
+      <span>足球五大联赛、NBA、电竞主流项目日常都有覆盖，冷门场次也有机会找到。</span>
+    </div>
+    <div class="feature-item">
+      <em>⚡ 轻量访问</em>
+      <span>页面结构偏轻，没有复杂脚本拖慢加载，适合网速一般或使用移动数据的场景。</span>
+    </div>
+    <div class="feature-item">
+      <em>🔄 多条线路</em>
+      <span>不少比赛会提供备用链接或线路，卡顿时可自行尝试切换。</span>
+    </div>
+  </div>
+
+  <h2>❸ 一些日常提醒</h2>
+  <p>直播资源有时会因为版权或地区原因临时失效，这是常见情况。如果遇到某个页面打不开或者比赛消失，可以稍等几分钟刷新，或者留意站点公告。建议不要通过非官方途径下载任何所谓的“专用播放器”，使用浏览器直接打开 <a href="https://m--hbzb.com">黑白直播</a> 就足够了，安全且省心。另外，观看时如遇页面上的广告位，顺手关掉就好，不必点击不明弹窗。</p>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-block">
+    <details>
+      <summary>为什么有时候画面加载很慢？</summary>
+      <p>可能是信号源服务器负载较高，或者你的网络到源站的路由不太顺畅。尝试切换线路、刷新页面，或者换个时间段再来观看。</p>
+    </details>
+    <details>
+      <summary>手机上看体验怎么样？</summary>
+      <p>移动端访问 <a href="https://m--hbzb.com">黑白直播</a> 同样流畅，页面会根据屏幕自适应。建议使用横屏模式观看比赛，体验更好。</p>
+    </details>
+    <details>
+      <summary>需要注册或登录吗？</summary>
+      <p>一般不需要。大部分内容直接打开就能看，不需要注册账号。个别功能或聊天互动可能另有说明，但基础观赛无需登录。</p>
+    </details>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="access-note">
+    <p>🔍 如果你还没试过，现在就可以打开 <a href="https://m--hbzb.com" class="btn-link">黑白直播</a></p>
+    <p style="font-size:1rem; margin-top:0.8rem; color:#584432;">不用下载，不用注册，一个浏览器就够了。</p>
+  </div>
+
+  <div class="footer-note">
+    <span>杂志式观赛指南 · 仅作介绍和提醒 · 内容定期更新</span>
+  </div>
+</div>
+
+</body>
+</html>
