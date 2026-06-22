@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 赛事资讯与简明指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce8d0 0%, #f5d6b5 40%, #f1c8a0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+            line-height: 1.6;
+            color: #2d241b;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.88);
+            backdrop-filter: blur(2px);
+            border-radius: 56px 56px 40px 40px;
+            box-shadow: 0 20px 40px -12px rgba(110, 60, 30, 0.25), 0 8px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 2.4rem 2.8rem 3.2rem;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ebd4bd;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #c9865e;
+            color: #fef6ed;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #7b4d2c, #a8693f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 680px;
+            color: #4d382a;
+            margin-top: 0.2rem;
+        }
+
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+            margin: 2.4rem 0 2.8rem;
+        }
+
+        .card-item {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 1.8rem 2.2rem;
+            box-shadow: 0 4px 16px rgba(140, 85, 45, 0.06), 0 1px 3px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #f0e2d3;
+        }
+
+        .card-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -8px rgba(100, 55, 25, 0.12);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #633f27;
+            margin-bottom: 0.9rem;
+        }
+
+        .card-title span {
+            background: #e9d3c0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #4f321f;
+        }
+
+        .card-item p {
+            margin-bottom: 0.85rem;
+            color: #3d2d1f;
+        }
+
+        .card-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            display: inline-block;
+            background: #dcb697;
+            color: #22170f;
+            padding: 0.1rem 0.4rem;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+            border-bottom: 2px solid #b88a68;
+        }
+
+        .highlight-link:hover {
+            background: #cda17e;
+            color: #0d0805;
+            border-bottom-color: #9b704b;
+        }
+
+        .faq-cluster {
+            background: #f9efe6;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 3rem;
+        }
+
+        .faq-cluster h3 {
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #5d3b25;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item {
+            flex: 1 1 200px;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #4f311e;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #3d2b1d;
+        }
+
+        .visit-strip {
+            margin-top: 1.6rem;
+            padding: 1.2rem 2rem;
+            background: #ffffff;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.6rem;
+            box-shadow: 0 2px 8px rgba(80, 45, 20, 0.06);
+            border: 1px solid #ead9c8;
+            font-size: 1.06rem;
+        }
+
+        .visit-strip a {
+            font-weight: 600;
+            color: #834f2c;
+            text-decoration: none;
+            border-bottom: 2px solid #dbb99b;
+            transition: border-color 0.15s, color 0.15s;
+            padding: 0 2px;
+        }
+
+        .visit-strip a:hover {
+            border-bottom-color: #9d6d46;
+            color: #502f1a;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a5d45;
+            border-top: 1px solid #e4cfbb;
+            padding-top: 1.8rem;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 700px) {
+            .page-wrap { padding: 1.6rem 1.2rem 2.4rem; border-radius: 32px; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 0.96rem; }
+            .card-item { padding: 1.4rem 1.2rem; }
+            .visit-strip { font-size: 0.95rem; padding: 1rem 1.4rem; }
+            .faq-cluster { padding: 1.2rem 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 0.8rem; }
+            .page-wrap { padding: 1.2rem 0.8rem 2rem; border-radius: 24px; }
+            .hero h1 { font-size: 1.6rem; }
+            .card-title { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="hero">
+        <span class="hero-badge">专题 · 简明指南</span>
+        <h1>赛事动态·信息速览</h1>
+        <p>围绕竞彩资讯与日常访问要点，提供清晰、务实的参考。内容基于公开赛事信息整理，便于快速了解平台结构及使用逻辑。</p>
+    </div>
+
+    <div class="intro-grid">
+        <div class="card-item">
+            <div class="card-title"><span>①</span> 信息聚合与赛程梳理</div>
+            <p>平台整合了国内外足球、篮球联赛的实时赛程、对阵及核心数据。不论五大联赛还是顶级杯赛，均以结构化方式呈现，方便横向比较。每轮赛前会更新阵容、伤病及天气等辅助信息，帮助使用者形成更完整的赛前判断。</p>
+            <p>对于关注特定联赛的用户，可依据联赛分类快速筛选，避免信息过载。数据更新频率为分钟级，关键场次实时同步。</p>
+        </div>
+        <div class="card-item">
+            <div class="card-title"><span>②</span> 基础访问与功能引导</div>
+            <p>访问 <a href="https://home-site-sporttery.com" class="highlight-link">竞彩网</a> 后，首页即可看到当日重点赛事卡片，点击可展开深度数据面板。站内搜索支持球队、联赛、日期等多维度查询。个人中心可管理关注的赛事与偏好设置，所有功能均基于标准浏览器环境开发，无需额外插件。</p>
+            <p>建议初次使用先浏览“赛程日历”模块，了解近七天的赛程分布；随后可进入“数据对比”工具，查看两队历史交锋及近期走势。页面布局遵循信息优先原则，关键操作按钮均带有明确文字标识。</p>
+        </div>
+        <div class="card-item">
+            <div class="card-title"><span>③</span> 场景适配与提醒事项</div>
+            <p>日常使用场景可分为三类：快速比分查看（移动端优先，页面轻量化）、深度赛前分析（桌面端展示更多图表与对比）、赛后复盘（提供事件回放与数据总结）。平台在高峰时段（如周末晚间）可能排队或短暂延迟，建议避开整点刷新高峰。</p>
+            <p>关于账户与数据安全：建议使用强密码并开启二次验证。平台不会主动索要短信验证码以外的敏感信息。如遇到页面异常或功能报错，可先清除浏览器缓存或尝试更换常用浏览器。信息延迟通常在 1-3 分钟以内，数据源以官方发布为准。</p>
+        </div>
+    </div>
+
+    <div class="faq-cluster">
+        <h3>▎ 常见关注点摘要</h3>
+        <div class="faq-item">
+            <strong>数据更新节奏</strong>
+            <p>赛程、比分、阵容等核心数据通常延迟 30 秒至 2 分钟，杯赛淘汰赛阶段更新频率更高。</p>
+        </div>
+        <div class="faq-item">
+            <strong>多终端适配</strong>
+            <p>手机、平板与桌面均提供一致信息结构，图表在窄屏下自动折叠为可滚动卡片。</p>
+        </div>
+        <div class="faq-item">
+            <strong>内容来源说明</strong>
+            <p>所有赛程、排名、球队数据均来自公开赛事信息与联盟官方口径，平台进行结构化整合。</p>
+        </div>
+        <div class="faq-item">
+            <strong>页面访问提示</strong>
+            <p>建议使用最新版 Chrome、Safari 或 Edge 浏览器，以获得完整功能体验。</p>
+        </div>
+    </div>
+
+    <div class="visit-strip">
+        <span>📌 如需查阅完整赛程、实时数据与深度分析工具，可直接前往</span>
+        <a href="https://home-site-sporttery.com">竞彩网</a>
+        <span>，信息以网站实际展示为准。</span>
+    </div>
+
+    <div class="footer-note">
+        <p>基于公开资料整理 · 内容仅供参考 · 请以平台实时页面为准</p>
+    </div>
+</div>
+</body>
+</html>
